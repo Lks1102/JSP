@@ -1,7 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	String sessid = (String) session.getAttribute("sessid");
-
 	
 	if(sessid == null) {
 		response.sendRedirect("../2_Session.jsp");
