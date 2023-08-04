@@ -4,7 +4,7 @@
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
-<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page contentType="application/json;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	// 인코딩 설정
 	request.setCharacterEncoding("UTF-8");
@@ -14,6 +14,8 @@
 	String name = request.getParameter("name");
 	String hp 	= request.getParameter("hp");
 	String age 	= request.getParameter("age");
+	
+	int result = 0;
 	
 	try{
 		// JNDI 서비스 객체 생성
@@ -26,22 +28,21 @@
 		DataSource ds = (DataSource)ctx.lookup("jdbc/userdb");
 		Connection conn = ds.getConnection();
 		
-		PreparedStatement psmt = conn.prepareStatement("insert into `user2` values(?,?,?,?)");
+		PreparedStatement psmt = conn.prepareStatement("insert into `user6` values(?,?,?,?)");
 		psmt.setString(1, uid);
 		psmt.setString(2, name);
 		psmt.setString(3, hp);
 		psmt.setString(4, age);
-		
-		psmt.executeUpdate();
-		
+		result = psmt.executeUpdate();
 		psmt.close();
 		conn.close();
+		
 		
 	}catch(Exception e){
 		e.printStackTrace();
 	}
 	
-	response.sendRedirect("/Ch06/user2/list.jsp");
-
-
+	String jsonData = "{\"result\":"+result+"}";
+	out.print(jsonData);
+	
 %>
