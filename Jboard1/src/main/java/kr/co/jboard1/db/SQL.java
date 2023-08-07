@@ -3,7 +3,7 @@ package kr.co.jboard1.db;
 public class SQL {
 
 	
-	// user
+	// User
 	public static final String INSERT_USER = "insert into `User` set "
 											+ "`uid`=?, "
 											+ "`pass`=SHA2(?, 256), "
@@ -25,5 +25,15 @@ public class SQL {
 	public static final String SELECT_COUNT_EMAIL 	= "select count(*) from `User` where `email`=?";
 	public static final String SELECT_COUNT_HP 		= "select count(*) from `User` where `hp`=?";
 	public static final String SELECT_TERMS 		= "select * from `terms`";
+	
+	// Article
+	public static final String INSERT_ARTICLE = "insert into `article` set "
+												+ "`title`=?, "
+												+ "`content`=?, "
+												+ "`writer`=?, "
+												+ "`regip`=?, "
+												+ "`rdate`=NOW()";
+	
+	public static final String INSERT_ARTICLES = "select * from `article` order by `rdate` desc";
 	
 }
