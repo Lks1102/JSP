@@ -4,11 +4,13 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>1_JDBC</title>
+		
 		<!-- 
 			날짜 : 2023/07/28
 			이름 : 이규석
 			내용 : JSP JDBC 실습
 		-->
+		
 	</head>
 	<body>
 		<h3>1.JDBC 실습</h3>
